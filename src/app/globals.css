@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/* Design token */
+@theme {
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Primary: 라즈베리 */
+  --color-primary-50: #fceef1;
+  --color-primary-100: #f8d7df;
+  --color-primary-200: #efaebe;
+  --color-primary-500: #d03a62;
+  --color-primary-600: #bc2f52;
+  --color-primary-700: #9c2443;
+
+  /* Neutral */
+  --color-page: #f4f5f7;
+  --color-surface: #ffffff;
+  --color-subtle: #f8f9fa;
+  --color-line: #dcdfe4;
+  --color-line-strong: #cdd1d6;
+  --color-fg: #1f2328;
+  --color-fg-secondary: #5f6670;
+  --color-fg-muted: #8a9099;
+
+  /* Status */
+  --color-danger: #c2410c;
+  --color-danger-bg: #fdede5;
+  --color-danger-line: #e9a79a;
+  --color-warning: #8a6100;
+  --color-warning-bg: #fef6dc;
+  --color-success: #2e7d32;
+  --color-success-bg: #eaf5ea;
+  --color-neutral: #4b525c;
+  --color-neutral-bg: #eef0f3;
+
+  /* Typography */
+  --text-*: initial;
+  --text-xs: 11px;
+  --text-xs--line-height: 16px;
+  --text-sm: 12px;
+  --text-sm--line-height: 18px;
+  --text-base: 13px;
+  --text-base--line-height: 20px;
+  --text-md: 14px;
+  --text-md--line-height: 20px;
+  --text-lg: 16px;
+  --text-lg--line-height: 24px;
+  --text-xl: 18px;
+  --text-xl--line-height: 26px;
+
+  /* Radius */
+  --radius-*: initial;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-full: 9999px;
+
+  /* Shadow */
+  --shadow-*: initial;
+  --shadow-popover: 0 4px 12px rgb(0 0 0 / 0.08), 0 1px 3px rgb(0 0 0 / 0.06);
+  --shadow-overlay: 0 12px 32px rgb(0 0 0 / 0.16), 0 2px 6px rgb(0 0 0 / 0.08);
+}
+
+@theme inline {
+  --font-sans:
+    var(--font-pretendard), -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    background-color: var(--color-page);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    -webkit-font-smoothing: antialiased;
+  }
+}
