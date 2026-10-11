@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils/cn";
 type ButtonVariant = "primary" | "secondary" | "ghost" | "danger" | "danger-solid";
 
 // 버튼 크기
-type ButtonSize = "sm" | "md";
+type ButtonSize = "sm" | "md" | "lg";
 
 type ButtonProps = ComponentProps<"button"> & {
   variant?: ButtonVariant;
@@ -50,4 +50,5 @@ const VARIANT_CLASS: Record<ButtonVariant, string> = {
 const SIZE_CLASS: Record<ButtonSize, string> = {
   sm: "h-7 px-2.5 text-sm",
   md: "h-8 px-3 text-base",
+  lg: "h-10 px-4 text-md",
 };

@@ -1,9 +1,9 @@
 import type { AxiosRequestConfig } from "axios";
+import { LOGIN_PATH } from "@/lib/utils/redirect";
 import { overlay } from "@/stores/overlay-store";
 import type { ApiResponse } from "./api.type";
-import { ERROR_CODE } from "./error-code";
+import { ERROR_CODE, LOGIN_REDIRECT_CODES } from "./error-code";
 
-const LOGIN_PATH = "/login";
 const DEFAULT_MESSAGE = "요청을 처리하지 못했습니다.\n잠시 후 다시 시도해주세요.";
 const NETWORK_MESSAGE = "서버와 통신할 수 없습니다.\n잠시 후 다시 시도해주세요.";
 
@@ -57,8 +57,7 @@ export async function handleApiError(error: ApiError, config?: AxiosRequestConfi
     return;
   }
 
-  const sessionEnded =
-    error.code === ERROR_CODE.ACCOUNT_LOCKED || error.code === ERROR_CODE.ACCOUNT_DISABLED;
+  const sessionEnded = LOGIN_REDIRECT_CODES.includes(error.code);
 
   if (config?.showError === false) {
     if (sessionEnded) redirectToLogin();
