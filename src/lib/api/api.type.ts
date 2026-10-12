@@ -21,3 +21,9 @@ export type PageParams = {
   page: number;     // 현재 페이지
   size: number;     // 페이지 크기
 };
+
+// api 요청 옵션
+export type RequestOptions = {
+  loading?: boolean;     // 전체 로딩 표시 여부
+  showError?: boolean;   // 공통 오류 alert 표시 여부
+};

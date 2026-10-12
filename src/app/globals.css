@@ -10,6 +10,7 @@
   --color-primary-50: #fceef1;
   --color-primary-100: #f8d7df;
   --color-primary-200: #efaebe;
+  --color-primary-400: #e06a88;
   --color-primary-500: #d03a62;
   --color-primary-600: #bc2f52;
   --color-primary-700: #9c2443;
@@ -75,6 +76,7 @@
   }
 
   body {
+    min-width: 1280px;
     background-color: var(--color-page);
     color: var(--color-fg);
     font-family: var(--font-sans);

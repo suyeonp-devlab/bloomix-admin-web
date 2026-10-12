@@ -6,3 +6,10 @@ export const ERROR_CODE = {
   NETWORK: "NETWORK_ERROR",       // 응답 없음
   UNKNOWN: "UNKNOWN_ERROR",       // 알수 없음
 } as const;
+
+// 로그인 화면으로 이동시키는 오류 코드
+export const LOGIN_REDIRECT_CODES: string[] = [
+  ERROR_CODE.UNAUTHORIZED,
+  ERROR_CODE.ACCOUNT_LOCKED,
+  ERROR_CODE.ACCOUNT_DISABLED,
+];
