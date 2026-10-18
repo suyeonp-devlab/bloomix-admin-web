@@ -1,20 +1,15 @@
-"use client";
+import { MonitorCog } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import { useLogoutMutation, useMeQuery } from "@/features/auth/auth.queries";
-
-// 임시 홈 (Header·메뉴 연동 후 정리)
+/** 관리자 메인 */
 export default function AdminHomePage() {
 
-  const { data } = useMeQuery();
-  const { mutateAsync: logout, isPending } = useLogoutMutation();
-
   return (
-    <div className="flex flex-col items-start gap-3 p-6">
-      <p>{data?.adminName}님, 로그인되었습니다.</p>
-      <Button onClick={() => logout()} disabled={isPending}>
-        로그아웃
-      </Button>
+    <div className="flex min-h-full flex-col items-center justify-center gap-6 text-center">
+      <MonitorCog className="size-24 text-primary-600" strokeWidth={1.25} aria-hidden />
+      <div>
+        <h1 className="text-2xl font-medium">환영합니다.</h1>
+        <p className="mt-1.5 text-lg text-fg-secondary">Bloomix 관리자 페이지입니다.</p>
+      </div>
     </div>
   );
 }

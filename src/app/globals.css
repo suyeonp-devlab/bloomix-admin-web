@@ -36,6 +36,9 @@
   --color-neutral: #4b525c;
   --color-neutral-bg: #eef0f3;
 
+  /* Layout */
+  --container-app: 1440px;
+
   /* Typography */
   --text-*: initial;
   --text-xs: 11px;
@@ -50,6 +53,8 @@
   --text-lg--line-height: 24px;
   --text-xl: 18px;
   --text-xl--line-height: 26px;
+  --text-2xl: 22px;
+  --text-2xl--line-height: 30px;
 
   /* Radius */
   --radius-*: initial;
