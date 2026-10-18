@@ -1,5 +1,15 @@
-// 임시 홈 (대시보드 확정 후 정리)
+import { MonitorCog } from "lucide-react";
+
+/** 관리자 메인 */
 export default function AdminHomePage() {
 
-  return <p className="text-fg-secondary">Bloomix 관리자에 오신 것을 환영합니다.</p>;
+  return (
+    <div className="flex min-h-full flex-col items-center justify-center gap-6 text-center">
+      <MonitorCog className="size-24 text-primary-600" strokeWidth={1.25} aria-hidden />
+      <div>
+        <h1 className="text-2xl font-medium">환영합니다.</h1>
+        <p className="mt-1.5 text-lg text-fg-secondary">Bloomix 관리자 페이지입니다.</p>
+      </div>
+    </div>
+  );
 }
