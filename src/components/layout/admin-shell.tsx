@@ -21,7 +21,7 @@ export function AdminShell({
         <aside className="w-55 shrink-0 overflow-y-auto border-r border-line">
           {sidebar}
         </aside>
-        <main className="min-w-0 flex-1 overflow-y-auto bg-page p-6">
+        <main className="min-w-0 flex-1 overflow-y-auto bg-page px-4 py-6">
           {children}
         </main>
       </div>

@@ -25,6 +25,7 @@ export function Input({
         "placeholder:text-fg-muted",
         "focus:border-primary-400 focus:ring-1 focus:ring-primary-200 focus:outline-none",
         "disabled:cursor-not-allowed disabled:border-line disabled:bg-subtle disabled:text-fg-muted",
+        "read-only:bg-subtle read-only:text-fg-secondary",
         invalid ? "border-danger-line" : "border-line-strong",
         SIZE_CLASS[size],
         className,

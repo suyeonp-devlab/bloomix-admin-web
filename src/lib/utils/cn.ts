@@ -1,8 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { extendTailwindMerge } from "tailwind-merge";
 
-/** className 관련 유틸 */
-
 // 커스텀 class token 등록
 const twMerge = extendTailwindMerge({
   extend: {
