@@ -20,7 +20,6 @@ type DataTableProps<T> = {
   rowKey: (row: T) => string;
   onRowDoubleClick?: (row: T) => void;
   emptyText?: string;
-  className?: string;
 };
 
 type SelectedCell = {
@@ -40,7 +39,6 @@ export function DataTable<T>({
   rowKey,
   onRowDoubleClick,
   emptyText = "조회된 데이터가 없습니다.",
-  className,
 }: DataTableProps<T>) {
 
   // 선택된 cell
@@ -113,7 +111,7 @@ export function DataTable<T>({
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget)) setSelected(null);
       }}
-      className={cn("overflow-x-auto rounded-md border border-line bg-surface focus:outline-none", className)}
+      className="overflow-x-auto bg-surface focus:outline-none"
     >
       <table
         className={cn("table-fixed border-collapse text-base", !resized && "w-full")}

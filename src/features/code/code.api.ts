@@ -11,7 +11,8 @@ const BASE = "/api/common-code-groups";
 
 // 코드 그룹 목록 조회
 export function searchGroups(params: CommonCodeGroupListRequest) {
-  return get<PageResponse<CommonCodeGroupListResponse>>(BASE, { params });
+  const enabled = params.enabled === "Y" ? true : params.enabled === "N" ? false : undefined;
+  return get<PageResponse<CommonCodeGroupListResponse>>(BASE, { params: { ...params, enabled } });
 }
 
 // 코드 그룹 상세 조회

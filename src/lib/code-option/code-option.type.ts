@@ -11,6 +11,7 @@ export type CodeOptionResponse = {
 
 // 셀렉트 옵션
 export type CodeOption = {
-  value: string;   // 코드
-  label: string;   // 코드명
+  value: string;          // 코드
+  label: string;          // 코드명
+  etc1: string | null;    // 기타1
 };

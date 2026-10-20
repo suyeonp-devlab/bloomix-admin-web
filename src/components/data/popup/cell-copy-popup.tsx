@@ -40,7 +40,7 @@ export function CellCopyPopup({ value }: CellCopyPopupProps) {
       </PopupBody>
       <PopupFooter>
         <Button onClick={() => overlay.close()}>닫기</Button>
-        <Button type="submit" variant="primary">복사</Button>
+        <Button type="submit" variant="primary-solid">복사</Button>
       </PopupFooter>
     </form>
   );

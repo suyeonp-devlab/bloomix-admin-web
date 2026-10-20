@@ -67,7 +67,7 @@ export function LoginForm({ redirectTo }: LoginFormProps) {
           </button>
         </div>
       </FormField>
-      <Button type="submit" variant="primary" size="lg" disabled={isPending || isSuccess} className="mt-2 w-full">
+      <Button type="submit" variant="primary-solid" size="lg" disabled={isPending || isSuccess} className="mt-2 w-full">
         로그인
       </Button>
     </form>

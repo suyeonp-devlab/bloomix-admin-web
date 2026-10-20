@@ -14,8 +14,8 @@ export function useCodeOptionsQuery(groupCode: string, { placeholder }: UseCodeO
     queryKey: codeOptionKeys.option(groupCode),
     queryFn: () => getCodeOptions(groupCode),
     select: (codes): CodeOption[] => {
-      const options = codes.map((item) => ({ value: item.code, label: item.codeName }));
-      return placeholder === undefined ? options : [{ value: "", label: placeholder }, ...options];
+      const options = codes.map((item) => ({ value: item.code, label: item.codeName, etc1: item.etc1 }));
+      return placeholder === undefined ? options : [{ value: "", label: placeholder, etc1: null }, ...options];
     },
     staleTime: 5 * 60_000,
   });

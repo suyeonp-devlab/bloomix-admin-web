@@ -2,9 +2,9 @@ import type { PageParams } from "@/lib/api/api.type";
 
 // 코드 그룹 목록 조회 요청
 export type CommonCodeGroupListRequest = PageParams & {
-  searchType: string;   // 검색 구분
+  searchType: string;   // 검색구분
   keyword: string;      // 검색어
-  enabled?: boolean;    // 사용 여부
+  enabled: string;      // 사용 여부
 };
 
 // 코드 그룹 목록 조회 응답
@@ -13,6 +13,7 @@ export type CommonCodeGroupListResponse = {
   groupName: string;           // 그룹명
   description: string | null;  // 설명
   enabled: boolean;            // 사용 여부
+  updatedBy: string;           // 수정자
   updatedAt: string;           // 수정일시
 };
 

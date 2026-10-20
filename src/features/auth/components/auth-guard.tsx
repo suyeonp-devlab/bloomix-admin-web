@@ -28,7 +28,7 @@ export function AuthGuard({ children }: { children: ReactNode }) {
           description="잠시 후 다시 시도해주세요."
           actions={
             <>
-              <Button variant="primary" onClick={() => refetch()}>다시 시도</Button>
+              <Button variant="primary-solid" onClick={() => refetch()}>다시 시도</Button>
               <Button onClick={() => window.location.replace(LOGIN_PATH)}>로그인 화면</Button>
             </>
           }

@@ -14,7 +14,6 @@ type PaginationProps = {
   size: number;
   onPageChange: (page: number) => void;
   onSizeChange: (size: number) => void;
-  className?: string;
 };
 
 type PageButtonProps = {
@@ -33,7 +32,6 @@ export function Pagination({
   size,
   onPageChange,
   onSizeChange,
-  className,
 }: PaginationProps) {
 
   if (totalElements === 0) return null;
@@ -44,7 +42,7 @@ export function Pagination({
   const pages = Array.from({ length: end - start + 1 }, (_, i) => start + i);
 
   return (
-    <div className={cn("flex items-center rounded-md border border-line bg-subtle px-3 py-1.5", className)}>
+    <div className="flex items-center border-t border-line bg-subtle px-3 py-1.5">
       <p className="flex-1 text-base">
         총 <span className="font-medium">{totalElements.toLocaleString()}</span>건
       </p>
