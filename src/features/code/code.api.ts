@@ -5,7 +5,6 @@ import type {
   CommonCodeGroupListResponse,
   CommonCodeGroupRequest,
   CommonCodeGroupResponse,
-  CommonCodeResponse,
 } from "./code.type";
 
 const BASE = "/api/common-code-groups";
@@ -28,9 +27,4 @@ export function createGroup(body: CommonCodeGroupRequest) {
 // 코드 그룹 + 코드 일괄 수정
 export function updateGroup(groupCode: string, body: CommonCodeGroupRequest) {
   return put(`${BASE}/${encodeURIComponent(groupCode)}`, body);
-}
-
-// 셀렉트박스용 코드 조회
-export function getOptions(groupCode: string) {
-  return get<CommonCodeResponse[]>(`/api/common-codes/${encodeURIComponent(groupCode)}`);
 }

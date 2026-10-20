@@ -1,5 +1,5 @@
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { createGroup, getGroup, getOptions, searchGroups, updateGroup } from "./code.api";
+import { createGroup, getGroup, searchGroups, updateGroup } from "./code.api";
 import { codeKeys } from "./code.keys";
 import type { CommonCodeGroupListRequest, CommonCodeGroupRequest } from "./code.type";
 
@@ -44,15 +44,5 @@ export function useUpdateGroupMutation() {
     mutationFn: ({ groupCode, body }: { groupCode: string; body: CommonCodeGroupRequest }) =>
       updateGroup(groupCode, body),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: codeKeys.all }),
-  });
-}
-
-/** 셀렉트박스용 코드 조회 query */
-export function useGetOptionsQuery(groupCode: string) {
-
-  return useQuery({
-    queryKey: codeKeys.option(groupCode),
-    queryFn: () => getOptions(groupCode),
-    staleTime: 5 * 60_000,
   });
 }
