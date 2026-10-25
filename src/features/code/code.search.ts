@@ -2,6 +2,15 @@ import { PAGE_SIZES } from "@/components/data/pagination";
 import { readOneOf, readPositiveInt, readString, toQueryString } from "@/lib/utils/search-query";
 import type { CommonCodeGroupListRequest } from "./code.type";
 
+// 공통코드 관리 목록 경로
+export const CODE_GROUP_PATH = "/admin/codes";
+
+// 목록 주소 (검색 조건 유지)
+export function toListHref(params: { toString(): string }) {
+  const query = params.toString();
+  return query ? `${CODE_GROUP_PATH}?${query}` : CODE_GROUP_PATH;
+}
+
 // default 검색 조건
 export const DEFAULT_SEARCH: CommonCodeGroupListRequest = {
   searchType: "",

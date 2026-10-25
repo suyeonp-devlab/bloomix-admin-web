@@ -35,13 +35,13 @@ export function CodeGroupList() {
       {/* 조회결과 */}
       <FormSection
         title="공통코드 그룹 조회결과"
-        actions={<Button variant="primary" onClick={() => router.push(`${pathname}/new`)}>신규 등록</Button>}
+        actions={<Button variant="primary" onClick={() => router.push(`${pathname}/new${serializeSearch(search)}`)}>신규 등록</Button>}
       >
         <DataTable
           columns={COLUMNS}
           rows={data?.content}
           rowKey={(row) => row.groupCode}
-          onRowDoubleClick={(row) => router.push(`${pathname}/${row.groupCode}`)}
+          onRowDoubleClick={(row) => router.push(`${pathname}/${row.groupCode}${serializeSearch(search)}`)}
         />
         <Pagination
           page={search.page}
