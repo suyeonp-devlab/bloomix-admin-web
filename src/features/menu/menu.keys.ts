@@ -1,3 +1,5 @@
 export const menuKeys = {
-  sidebar: ["menu", "sidebar"] as const,
+  all: ["menu"] as const,
+  sidebar: () => [...menuKeys.all, "sidebar"] as const,
+  lists: () => [...menuKeys.all, "list"] as const,
 };
