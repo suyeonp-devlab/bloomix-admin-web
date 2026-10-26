@@ -22,7 +22,6 @@ import { findMenu } from "../menu.util";
 type MenuFormPopupProps = {
   menu?: AdminMenu;
   menus: AdminMenu[];
-  onSaveAction: (menuId: string) => void;
 };
 
 type MenuFormPopupBodyProps = MenuFormPopupProps & {
@@ -30,11 +29,7 @@ type MenuFormPopupBodyProps = MenuFormPopupProps & {
 };
 
 /** 메뉴 등록 및 수정 popup */
-export function MenuFormPopup({
-  menu,
-  menus,
-  onSaveAction
-}: MenuFormPopupProps) {
+export function MenuFormPopup({ menu, menus }: MenuFormPopupProps) {
 
   const { data: usgTypes, isPending } = useCodeOptionsQuery("USG_STATUS");
 
@@ -44,7 +39,6 @@ export function MenuFormPopup({
     <MenuFormBodyPopup
       menu={menu}
       menus={menus}
-      onSaveAction={onSaveAction}
       usgTypes={usgTypes ?? []}
     />
   );
@@ -54,7 +48,6 @@ export function MenuFormPopup({
 function MenuFormBodyPopup({
   menu,
   menus,
-  onSaveAction,
   usgTypes
 }: MenuFormPopupBodyProps) {
 
@@ -89,7 +82,6 @@ function MenuFormBodyPopup({
 
     await overlay.alert("저장되었습니다.");
     overlay.close();
-    onSaveAction(body.menuId);
   };
 
   return (

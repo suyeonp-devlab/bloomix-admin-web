@@ -10,18 +10,11 @@ import type { AdminMenu } from "../menu.type";
 
 type MenuTreeTableProps = {
   menus: AdminMenu[];
-  selectedId: string | null;
-  onSelectAction: (menu: AdminMenu) => void;
   onRowDoubleClickAction: (menu: AdminMenu) => void;
 };
 
 /** 메뉴 트리 표 */
-export function MenuTreeTable({
-  menus,
-  selectedId,
-  onSelectAction,
-  onRowDoubleClickAction,
-}: MenuTreeTableProps) {
+export function MenuTreeTable({ menus, onRowDoubleClickAction }: MenuTreeTableProps) {
 
   // 접힌 메뉴 ID
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
@@ -85,10 +78,7 @@ export function MenuTreeTable({
       rows={rows}
       rowKey={(row) => row.menuId}
       rowClassName={(row) => !row.enabled && "text-fg-muted"}
-      selectedRowKey={selectedId}
-      onRowSelect={onSelectAction}
       onRowDoubleClick={onRowDoubleClickAction}
-      emptyText="등록된 메뉴가 없습니다."
     />
   );
 }
