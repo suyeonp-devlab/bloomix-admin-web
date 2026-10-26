@@ -36,7 +36,7 @@ export function MenuFormPopup({ menu, menus }: MenuFormPopupProps) {
   if (isPending) return null;
 
   return (
-    <MenuFormBodyPopup
+    <MenuFormPopupBody
       menu={menu}
       menus={menus}
       usgTypes={usgTypes ?? []}
@@ -45,7 +45,7 @@ export function MenuFormPopup({ menu, menus }: MenuFormPopupProps) {
 }
 
 /** 메뉴 등록 및 수정 popup 본문 */
-function MenuFormBodyPopup({
+function MenuFormPopupBody({
   menu,
   menus,
   usgTypes
