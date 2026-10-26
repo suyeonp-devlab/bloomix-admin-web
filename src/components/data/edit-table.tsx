@@ -1,5 +1,9 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils/cn";
+import { tableMaxHeight } from "@/lib/utils/table-scroll";
+
+// 행 높이(px) (입력칸 + 셀 여백)
+const ROW_HEIGHT = 45;
 
 export type EditTableColumn<T> = {
   key: string;
@@ -25,15 +29,15 @@ export function EditTable<T>({
 }: EditTableProps<T>) {
 
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full table-fixed border-collapse text-base">
+    <div style={{ maxHeight: tableMaxHeight(ROW_HEIGHT) }} className="overflow-auto">
+      <table className="w-full table-fixed border-separate border-spacing-0 text-base">
         <thead>
           <tr>
             {columns.map((column) => (
               <th
                 key={column.key}
                 className={cn(
-                  "h-9 border-r border-b border-line bg-subtle px-2.5 text-center text-sm font-medium text-fg-secondary",
+                  "sticky top-0 z-10 h-9 border-r border-b border-line bg-subtle px-2.5 text-center text-sm font-medium text-fg-secondary",
                   "last:border-r-0",
                   column.className,
                 )}
