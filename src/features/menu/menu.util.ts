@@ -16,3 +16,17 @@ export function findMenuBreadcrumb(menus: AdminMenu[], pathname: string) {
 
   return [];
 }
+
+// 메뉴 ID로 메뉴 찾기
+export function findMenu(menus: AdminMenu[], menuId: string | null) {
+
+  if (!menuId) return undefined;
+
+  for (const menu of menus) {
+    if (menu.menuId === menuId) return menu;
+    const child = menu.children.find((c) => c.menuId === menuId);
+    if (child) return child;
+  }
+
+  return undefined;
+}

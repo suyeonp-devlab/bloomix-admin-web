@@ -1,11 +1,15 @@
 import { useRef, useState } from "react";
 import type { KeyboardEvent, PointerEvent as ReactPointerEvent, ReactNode } from "react";
 import { cn } from "@/lib/utils/cn";
+import { tableMaxHeight } from "@/lib/utils/table-scroll";
 import { overlay } from "@/stores/overlay-store";
 import { CellCopyPopup } from "./popup/cell-copy-popup";
 
 // 컬럼 최소 폭(px)
 const MIN_COLUMN_WIDTH = 60;
+
+// 행 높이(px)
+const ROW_HEIGHT = 32;
 
 export type DataTableColumn<T> = {
   key: string;
@@ -19,6 +23,9 @@ type DataTableProps<T> = {
   rows: T[] | undefined;
   rowKey: (row: T) => string;
   onRowDoubleClick?: (row: T) => void;
+  rowClassName?: (row: T) => string | false | undefined;
+  selectedRowKey?: string | null;
+  onRowSelect?: (row: T) => void;
   emptyText?: string;
 };
 
@@ -38,6 +45,9 @@ export function DataTable<T>({
   rows,
   rowKey,
   onRowDoubleClick,
+  rowClassName,
+  selectedRowKey,
+  onRowSelect,
   emptyText = "조회된 데이터가 없습니다.",
 }: DataTableProps<T>) {
 
@@ -111,10 +121,11 @@ export function DataTable<T>({
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget)) setSelected(null);
       }}
-      className="overflow-x-auto bg-surface focus:outline-none"
+      style={{ maxHeight: tableMaxHeight(ROW_HEIGHT) }}
+      className="overflow-auto bg-surface focus:outline-none"
     >
       <table
-        className={cn("table-fixed border-collapse text-base", !resized && "w-full")}
+        className={cn("table-fixed border-separate border-spacing-0 text-base", !resized && "w-full")}
         style={resized ? { width: totalWidth, minWidth: "100%" } : undefined}
       >
         {resized && (
@@ -131,7 +142,7 @@ export function DataTable<T>({
                 key={column.key}
                 ref={(el) => { headerRefs.current[column.key] = el; }}
                 className={cn(
-                  "relative h-9 truncate border-r border-b border-line bg-subtle px-2.5 text-sm font-medium text-fg-secondary",
+                  "sticky top-0 z-10 h-9 truncate border-r border-b border-line bg-subtle px-2.5 text-sm font-medium text-fg-secondary",
                   "last:border-r-0",
                   column.className,
                   "text-center",
@@ -153,7 +164,7 @@ export function DataTable<T>({
           {rows?.map((row) => {
 
             const key = rowKey(row);
-            const selectedRow = selected?.rowKey === key;
+            const selectedRow = (selectedRowKey !== undefined ? selectedRowKey : selected?.rowKey) === key;
 
             return (
               <tr
@@ -164,14 +175,16 @@ export function DataTable<T>({
                   "last:[&>td]:border-b-0",
                   onRowDoubleClick && "cursor-pointer select-none",
                   selectedRow ? "bg-primary-50" : "hover:bg-subtle",
+                  rowClassName?.(row),
                 )}
               >
                 {columns.map((column) => (
                   <td
                     key={column.key}
                     onClick={(e) => {
-                      setSelected({ rowKey: key, columnKey: column.key, text: e.currentTarget.textContent ?? "" })}
-                    }
+                      setSelected({ rowKey: key, columnKey: column.key, text: e.currentTarget.textContent ?? "" });
+                      onRowSelect?.(row);
+                    }}
                     className={cn(
                       "h-8 truncate border-r border-b border-line px-2.5",
                       "last:border-r-0",
