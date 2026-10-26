@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 import { cn } from "@/lib/utils/cn";
 
 // 버튼 유형
-type ButtonVariant = "primary" | "secondary" | "ghost" | "danger" | "danger-solid";
+type ButtonVariant = "primary" | "primary-solid" | "secondary" | "ghost" | "danger" | "danger-solid";
 
 // 버튼 크기
 type ButtonSize = "sm" | "md" | "lg";
@@ -39,7 +39,8 @@ export function Button({
 
 // 버튼 유형에 따른 className
 const VARIANT_CLASS: Record<ButtonVariant, string> = {
-  primary: "bg-primary-600 font-medium text-white hover:bg-primary-700 disabled:bg-primary-200",
+  primary: "border border-primary-600 bg-surface font-medium text-primary-600 hover:bg-primary-50 disabled:border-primary-200 disabled:text-primary-200",
+  "primary-solid": "bg-primary-600 font-medium text-white hover:bg-primary-700 disabled:bg-primary-200",
   secondary: "border border-line-strong bg-surface text-fg hover:bg-subtle disabled:text-fg-muted",
   ghost: "text-fg-secondary hover:bg-subtle hover:text-fg disabled:text-fg-muted",
   danger: "border border-danger-line bg-surface text-danger hover:bg-danger-bg disabled:opacity-50",

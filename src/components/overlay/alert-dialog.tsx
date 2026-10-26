@@ -30,7 +30,7 @@ export function AlertDialogView({
           </div>
           <div className="mx-5 flex justify-end border-t border-line py-3">
             <AlertDialog.Action asChild>
-              <Button variant="primary">
+              <Button variant="primary-solid">
                 {options.confirmText ?? "확인"}
               </Button>
             </AlertDialog.Action>

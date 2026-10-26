@@ -1,5 +1,3 @@
-/** 이동 경로 관련 유틸 */
-
 const HOME_PATH = "/";
 export const LOGIN_PATH = "/login";
 

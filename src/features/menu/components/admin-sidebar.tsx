@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { cn } from "@/lib/utils/cn";
 import { useSidebarMenusQuery } from "../menu.queries";
+import { isActivePath } from "../menu.util";
 
 /** 어드민 사이드바 */
 export function AdminSidebar() {
@@ -67,11 +68,6 @@ export function AdminSidebar() {
       })}
     </nav>
   );
-}
-
-// 현재 경로와 일치하는 메뉴인지 확인
-function isActivePath(menuPath: string | null, currentPath: string) {
-  return menuPath !== null && (menuPath === currentPath || currentPath.startsWith(`${menuPath}/`));
 }
 
 // 메뉴 행 공통 className
