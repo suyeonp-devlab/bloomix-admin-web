@@ -41,6 +41,7 @@ export function CodeGroupList() {
           columns={COLUMNS}
           rows={data?.content}
           rowKey={(row) => row.groupCode}
+          rowClassName={(row) => !row.enabled && "text-fg-muted"}
           onRowDoubleClick={(row) => router.push(`${pathname}/${row.groupCode}${serializeSearch(search)}`)}
         />
         <Pagination
