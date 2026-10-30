@@ -7,7 +7,7 @@ import { Pagination } from "@/components/data/pagination";
 import { FormSection } from "@/components/form/form-section";
 import { Button } from "@/components/ui/button";
 import { useUrlSearch } from "@/hooks/use-url-search";
-import { formatDateTime } from "@/lib/utils/format";
+import { formatDateTime } from "@/lib/utils/date";
 import { useSearchGroupsQuery } from "../code.queries";
 import { DEFAULT_SEARCH, parseSearch, serializeSearch } from "../code.search";
 import type { CommonCodeGroupListResponse } from "../code.type";
