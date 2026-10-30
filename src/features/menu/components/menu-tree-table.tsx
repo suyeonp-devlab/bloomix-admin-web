@@ -5,7 +5,7 @@ import { useState } from "react";
 import { DataTable } from "@/components/data/data-table";
 import type { DataTableColumn } from "@/components/data/data-table";
 import { cn } from "@/lib/utils/cn";
-import { formatDateTime } from "@/lib/utils/format";
+import { formatDateTime } from "@/lib/utils/date";
 import type { AdminMenu } from "../menu.type";
 
 type MenuTreeTableProps = {

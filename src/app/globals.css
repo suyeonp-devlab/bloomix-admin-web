@@ -35,6 +35,9 @@
   --color-success-bg: #eaf5ea;
   --color-neutral: #4b525c;
   --color-neutral-bg: #eef0f3;
+  --color-info: #1f5fbf;
+  --color-info-bg: #eaf1fc;
+  --color-info-line: #8fb2e8;
 
   /* Layout */
   --container-app: 1440px;
