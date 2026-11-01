@@ -1,5 +1,5 @@
 import { formatDate } from "@/lib/utils/date";
-import type { CalendarDay, HolidayCalendarSearch } from "./holiday.type";
+import type { CalendarDay, CalendarSearch } from "./holiday.type";
 
 // 요일
 export const WEEKDAYS = ["일", "월", "화", "수", "목", "금", "토"];
@@ -8,7 +8,7 @@ export const WEEKDAYS = ["일", "월", "화", "수", "목", "금", "토"];
 const CALENDAR_DAYS = 42;
 
 // 달력 날짜 목록
-export function buildCalendarDays({ year, month }: HolidayCalendarSearch): CalendarDay[] {
+export function buildCalendarDays({ year, month }: CalendarSearch): CalendarDay[] {
 
   // 1일의 요일 (0 일요일 ~ 6 토요일)
   const firstDayOfWeek = new Date(year, month - 1, 1).getDay();

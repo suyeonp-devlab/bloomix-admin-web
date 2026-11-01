@@ -1,17 +1,17 @@
 import { readOneOf, readPositiveInt, toQueryString } from "@/lib/utils/search-query";
-import type { HolidayCalendarSearch } from "./holiday.type";
+import type { CalendarSearch } from "./holiday.type";
 
 // 월 목록
 const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
 
 // default 검색 조건
-export function defaultSearch(): HolidayCalendarSearch {
+export function defaultSearch(): CalendarSearch {
   const today = new Date();
   return { year: today.getFullYear(), month: today.getMonth() + 1 };
 }
 
 // URL 쿼리 → 검색 조건
-export function parseSearch(params: Pick<URLSearchParams, "get">): HolidayCalendarSearch {
+export function parseSearch(params: Pick<URLSearchParams, "get">): CalendarSearch {
 
   const defaults = defaultSearch();
 
@@ -22,7 +22,7 @@ export function parseSearch(params: Pick<URLSearchParams, "get">): HolidayCalend
 }
 
 // 검색 조건 → URL 쿼리
-export function serializeSearch(search: HolidayCalendarSearch) {
+export function serializeSearch(search: CalendarSearch) {
 
   return toQueryString({
       year: search.year,
