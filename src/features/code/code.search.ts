@@ -26,7 +26,7 @@ export function parseSearch(params: Pick<URLSearchParams, "get">): CommonCodeGro
   return {
     searchType: readString(params, "searchType", DEFAULT_SEARCH.searchType),
     keyword: readString(params, "keyword", DEFAULT_SEARCH.keyword),
-    enabled: readOneOf(params, "enabled", ["Y", "N"] as const, ""),
+    enabled: readOneOf(params, "enabled", ["Y", "N"] as const, DEFAULT_SEARCH.enabled),
     page: readPositiveInt(params, "page", DEFAULT_SEARCH.page),
     size: readOneOf(params, "size", PAGE_SIZES, DEFAULT_SEARCH.size),
   };
