@@ -14,7 +14,7 @@ type CodeGroupSearchFormProps = {
   onResetAction: () => void;
 };
 
-/** 코드 그룹 목록 >  검색 영역 */
+/** 코드 그룹 목록 > 검색 영역 */
 export function CodeGroupSearchForm({
   search,
   onSearchAction,
@@ -44,7 +44,7 @@ export function CodeGroupSearchForm({
           value={searchType}
           onChange={(e) => {
             setSearchType(e.target.value);
-            if(!e.target.value) setKeyword("");
+            if (!e.target.value) setKeyword("");
           }}
         >
           {searchTypes.map((item) => (
