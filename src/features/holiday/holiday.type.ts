@@ -1,11 +1,11 @@
-// 공휴일 조회 응답
-export type HolidayResponse = {
+// 공휴일
+export type Holiday = {
   holidayDate: string;  // 날짜
   name: string;         // 공휴일명
 };
 
 // 달력 생성 조건
-export type HolidayCalendarSearch = {
+export type CalendarSearch = {
   year: number;   // 연도
   month: number;  // 월
 };
