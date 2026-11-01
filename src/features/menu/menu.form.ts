@@ -1,7 +1,7 @@
-import type { AdminMenu, AdminMenuRequest } from "./menu.type";
+import type { AdminMenu, AdminMenuFormRequest } from "./menu.type";
 
 // 메뉴 등록 폼 초기값
-export const MENU_EMPTY_FORM_VALUES: AdminMenuRequest = {
+export const MENU_EMPTY_FORM_VALUES: AdminMenuFormRequest = {
   menuId: "",
   parentId: "",
   menuName: "",
@@ -16,7 +16,7 @@ export function nextSortOrder(menus: AdminMenu[]) {
 }
 
 // 등록 폼 값 normalize
-export function normalizeFormValues(values: AdminMenuRequest): AdminMenuRequest {
+export function normalizeFormValues(values: AdminMenuFormRequest): AdminMenuFormRequest {
 
   // 앞뒤 공백 제거: 메뉴명, 메뉴 경로
   // 빈문자열 null 처리: 상위 메뉴, 메뉴 경로

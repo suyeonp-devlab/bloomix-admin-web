@@ -16,7 +16,7 @@ import { overlay } from "@/stores/overlay-store";
 import { MENU_EMPTY_FORM_VALUES, nextSortOrder, normalizeFormValues } from "../menu.form";
 import { useCreateMenuMutation, useUpdateMenuMutation } from "../menu.queries";
 import { menuSchema } from "../menu.schema";
-import type { AdminMenu, AdminMenuRequest } from "../menu.type";
+import type { AdminMenu, AdminMenuFormRequest } from "../menu.type";
 import { findMenu } from "../menu.util";
 
 type MenuFormPopupProps = {
@@ -58,7 +58,7 @@ function MenuFormPopupBody({
   const sortOrderUnder = (parentId?: string | null) =>
     nextSortOrder(parentId ? findMenu(menus, parentId)?.children ?? [] : menus);
 
-  const { register, control, setValue, handleSubmit, formState: { errors } } = useForm<AdminMenuRequest>({
+  const { register, control, setValue, handleSubmit, formState: { errors } } = useForm<AdminMenuFormRequest>({
     resolver: zodResolver(menuSchema),
     defaultValues: menu ? structuredClone(menu) : { ...MENU_EMPTY_FORM_VALUES, sortOrder: sortOrderUnder(null) },
   });
@@ -73,7 +73,7 @@ function MenuFormPopupBody({
   const hasChildren = !!menu?.children.length;
 
   // 메뉴 저장 및 수정
-  const handleSave = async (values: AdminMenuRequest) => {
+  const handleSave = async (values: AdminMenuFormRequest) => {
 
     const body = normalizeFormValues(values);
 
