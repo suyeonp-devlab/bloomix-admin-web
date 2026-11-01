@@ -3,8 +3,8 @@ import { get, post, put } from "@/lib/api/client";
 import type {
   CommonCodeGroupListRequest,
   CommonCodeGroupListResponse,
-  CommonCodeGroupRequest,
-  CommonCodeGroupResponse,
+  CommonCodeGroupFormRequest,
+  CommonCodeGroup,
 } from "./code.type";
 
 const BASE = "/api/common-code-groups";
@@ -17,15 +17,15 @@ export function searchGroups(params: CommonCodeGroupListRequest) {
 
 // 코드 그룹 상세 조회
 export function getGroup(groupCode: string) {
-  return get<CommonCodeGroupResponse>(`${BASE}/${encodeURIComponent(groupCode)}`);
+  return get<CommonCodeGroup>(`${BASE}/${encodeURIComponent(groupCode)}`);
 }
 
 // 코드 그룹 + 코드 일괄 등록
-export function createGroup(body: CommonCodeGroupRequest) {
+export function createGroup(body: CommonCodeGroupFormRequest) {
   return post(BASE, body);
 }
 
 // 코드 그룹 + 코드 일괄 수정
-export function updateGroup(groupCode: string, body: CommonCodeGroupRequest) {
+export function updateGroup(groupCode: string, body: CommonCodeGroupFormRequest) {
   return put(`${BASE}/${encodeURIComponent(groupCode)}`, body);
 }

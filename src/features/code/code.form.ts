@@ -1,7 +1,7 @@
-import type { CommonCodeGroupRequest, CommonCodeResponse } from "./code.type";
+import type { CommonCode, CommonCodeGroupFormRequest } from "./code.type";
 
 // 코드 그룹 등록 폼 초기값
-export const CODE_GROUP_EMPTY_FORM_VALUES: CommonCodeGroupRequest = {
+export const CODE_GROUP_EMPTY_FORM_VALUES: CommonCodeGroupFormRequest = {
   groupCode: "",
   groupName: "",
   description: "",
@@ -10,7 +10,7 @@ export const CODE_GROUP_EMPTY_FORM_VALUES: CommonCodeGroupRequest = {
 };
 
 // 코드 등록 폼 초기값
-export const CODE_EMPTY_FORM_VALUES: CommonCodeResponse = {
+export const CODE_EMPTY_FORM_VALUES: CommonCode = {
   code: "",
   codeName: "",
   sortOrder: 0,
@@ -21,7 +21,7 @@ export const CODE_EMPTY_FORM_VALUES: CommonCodeResponse = {
 };
 
 // 등록 폼 값 normalize
-export function normalizeFormValues(values: CommonCodeGroupRequest): CommonCodeGroupRequest {
+export function normalizeFormValues(values: CommonCodeGroupFormRequest): CommonCodeGroupFormRequest {
 
   // 앞뒤 공백 제거: 그룹명, 설명, 코드명
   // 빈문자열 null 처리: 설명, 기타1, 기타2, 기타3

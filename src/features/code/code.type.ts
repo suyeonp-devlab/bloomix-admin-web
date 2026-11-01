@@ -17,19 +17,19 @@ export type CommonCodeGroupListResponse = {
   updatedAt: string;           // 수정일시
 };
 
-// 코드 그룹 상세 조회 응답
-export type CommonCodeGroupResponse = {
+// 코드 그룹
+export type CommonCodeGroup = {
   groupCode: string;            // 그룹 코드
   groupName: string;            // 그룹명
   description: string | null;   // 설명
   enabled: boolean;             // 사용 여부
   createdAt: string;            // 등록일시
   updatedAt: string;            // 수정일시
-  codes: CommonCodeResponse[];  // 코드 목록
+  codes: CommonCode[];          // 코드 목록
 };
 
-// 코드 조회 응답
-export type CommonCodeResponse = {
+// 코드
+export type CommonCode = {
   code: string;               // 코드
   codeName: string;           // 코드명
   sortOrder: number;          // 정렬 순서
@@ -40,10 +40,10 @@ export type CommonCodeResponse = {
 };
 
 // 코드 그룹 + 코드 일괄 등록 및 수정 요청
-export type CommonCodeGroupRequest = {
+export type CommonCodeGroupFormRequest = {
   groupCode: string;            // 그룹 코드
   groupName: string;            // 그룹명
   description: string | null;   // 설명
   enabled: boolean;             // 사용 여부
-  codes: CommonCodeResponse[];  // 코드 목록
+  codes: CommonCode[];          // 코드 목록
 };

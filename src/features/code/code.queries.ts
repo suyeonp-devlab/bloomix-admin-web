@@ -1,7 +1,7 @@
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createGroup, getGroup, searchGroups, updateGroup } from "./code.api";
 import { codeKeys } from "./code.keys";
-import type { CommonCodeGroupListRequest, CommonCodeGroupRequest } from "./code.type";
+import type { CommonCodeGroupListRequest, CommonCodeGroupFormRequest } from "./code.type";
 
 /** 코드 그룹 목록 조회 query */
 export function useSearchGroupsQuery(params: CommonCodeGroupListRequest) {
@@ -41,7 +41,7 @@ export function useUpdateGroupMutation() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ groupCode, body }: { groupCode: string; body: CommonCodeGroupRequest }) =>
+    mutationFn: ({ groupCode, body }: { groupCode: string; body: CommonCodeGroupFormRequest }) =>
       updateGroup(groupCode, body),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: codeKeys.all }),
   });

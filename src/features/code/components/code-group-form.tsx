@@ -17,11 +17,11 @@ import { CODE_GROUP_EMPTY_FORM_VALUES, normalizeFormValues } from "../code.form"
 import { useCreateGroupMutation, useUpdateGroupMutation } from "../code.queries";
 import { codeGroupSchema } from "../code.schema";
 import { toListHref } from "../code.search";
-import type { CommonCodeGroupRequest, CommonCodeGroupResponse } from "../code.type";
+import type { CommonCodeGroup, CommonCodeGroupFormRequest } from "../code.type";
 import { CodeListEditor } from "./code-list-editor";
 
 type CodeGroupFormProps = {
-  group?: CommonCodeGroupResponse;
+  group?: CommonCodeGroup;
 };
 
 type CodeGroupFormBodyProps = CodeGroupFormProps & {
@@ -47,7 +47,7 @@ function CodeGroupFormBody({ group, usgTypes }: CodeGroupFormBodyProps) {
   const { mutateAsync: createGroup, isPending: creating } = useCreateGroupMutation();
   const { mutateAsync: updateGroup, isPending: updating } = useUpdateGroupMutation();
 
-  const methods = useForm<CommonCodeGroupRequest>({
+  const methods = useForm<CommonCodeGroupFormRequest>({
     resolver: zodResolver(codeGroupSchema),
     defaultValues: group ? structuredClone(group) : CODE_GROUP_EMPTY_FORM_VALUES
   });
@@ -55,7 +55,7 @@ function CodeGroupFormBody({ group, usgTypes }: CodeGroupFormBodyProps) {
   const { register, control, handleSubmit, formState: { errors } } = methods;
 
   // 코드 그룹 저장 및 수정
-  const handleSave = async (values: CommonCodeGroupRequest) => {
+  const handleSave = async (values: CommonCodeGroupFormRequest) => {
 
     const body = normalizeFormValues(values);
 
