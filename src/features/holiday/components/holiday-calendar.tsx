@@ -77,7 +77,7 @@ function CalendarCell({ day, holidayName, isToday }: CalendarCellProps) {
   return (
     <div
       className={cn(
-        "h-20 border-b border-r border-line px-2 py-1.5 text-sm",
+        "min-h-24 border-b border-r border-line px-2 py-1.5 text-sm",
         "nth-[7n]:border-r-0 nth-last-[-n+7]:border-b-0",
         dayBgClass(day.dayOfWeek, !!holidayName, day.inMonth),
       )}
