@@ -8,7 +8,7 @@ import { EnabledSelect } from "@/components/ui/enabled-select";
 import { Input } from "@/components/ui/input";
 import type { CodeOption } from "@/lib/code-option/code-option.type";
 import { CODE_EMPTY_FORM_VALUES } from "../code.form";
-import type { CommonCodeGroupRequest } from "../code.type";
+import type { CommonCodeGroupFormRequest } from "../code.type";
 
 type CodeListEditorProps = {
   existingCount: number;
@@ -18,7 +18,7 @@ type CodeListEditorProps = {
 /** 코드 목록 편집 */
 export function CodeListEditor({ existingCount, usgTypes }: CodeListEditorProps) {
 
-  const { register, control, getValues, formState: { errors } } = useFormContext<CommonCodeGroupRequest>();
+  const { register, control, getValues, formState: { errors } } = useFormContext<CommonCodeGroupFormRequest>();
   const { fields, append, remove } = useFieldArray({ control, name: "codes" });
 
   // 코드 행 추가
