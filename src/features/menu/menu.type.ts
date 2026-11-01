@@ -11,7 +11,7 @@ export type AdminMenu = {
 };
 
 // 메뉴 등록 및 수정 요청
-export type AdminMenuRequest = {
+export type AdminMenuFormRequest = {
   menuId: string;             // 메뉴 ID
   parentId: string | null;    // 상위 메뉴 ID
   menuName: string;           // 메뉴명

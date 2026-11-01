@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createMenu, getMenus, getSidebarMenus, updateMenu } from "./menu.api";
 import { menuKeys } from "./menu.keys";
-import type { AdminMenuRequest } from "./menu.type";
+import type { AdminMenuFormRequest } from "./menu.type";
 
 /** 사이드바 메뉴 조회 query */
 export function useSidebarMenusQuery() {
@@ -40,7 +40,7 @@ export function useUpdateMenuMutation() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ menuId, body }: { menuId: string; body: AdminMenuRequest }) =>
+    mutationFn: ({ menuId, body }: { menuId: string; body: AdminMenuFormRequest }) =>
       updateMenu(menuId, body),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: menuKeys.all }),
   });

@@ -1,5 +1,5 @@
 import { get, post, put } from "@/lib/api/client";
-import type { AdminMenu, AdminMenuRequest } from "./menu.type";
+import type { AdminMenu, AdminMenuFormRequest } from "./menu.type";
 
 const BASE = "/api/admin-menus";
 
@@ -14,11 +14,11 @@ export function getMenus() {
 }
 
 // 메뉴 등록
-export function createMenu(body: AdminMenuRequest) {
+export function createMenu(body: AdminMenuFormRequest) {
   return post(BASE, body);
 }
 
 // 메뉴 수정
-export function updateMenu(menuId: string, body: AdminMenuRequest) {
+export function updateMenu(menuId: string, body: AdminMenuFormRequest) {
   return put(`${BASE}/${encodeURIComponent(menuId)}`, body);
 }
