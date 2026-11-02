@@ -2,6 +2,12 @@ import { PAGE_SIZES } from "@/components/data/pagination";
 import { readOneOf, readPositiveInt, readString, toQueryString } from "@/lib/utils/search-query";
 import type { BatchHistoryListRequest } from "./batch-history.type";
 
+// 실행 이력 경로
+const BATCH_HISTORY_PATH = "/batch/histories";
+
+// 검색구분: 배치 ID
+export const HISTORY_SEARCH_TYPE_ID = "ID";
+
 // default 검색 조건
 export const DEFAULT_SEARCH: BatchHistoryListRequest = {
   searchType: "",
@@ -42,4 +48,9 @@ export function serializeSearch(search: BatchHistoryListRequest) {
       page: search.page,
       size: search.size,
     }, DEFAULT_SEARCH);
+}
+
+// 배치의 실행 이력 주소
+export function toBatchHistoryHref(jobId: string) {
+  return `${BATCH_HISTORY_PATH}${serializeSearch({ ...DEFAULT_SEARCH, searchType: HISTORY_SEARCH_TYPE_ID, keyword: jobId })}`;
 }
