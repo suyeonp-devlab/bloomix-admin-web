@@ -26,6 +26,7 @@ type DataTableProps<T> = {
   rowClassName?: (row: T) => string | false | undefined;
   selectedRowKey?: string | null;
   onRowSelect?: (row: T) => void;
+  maxRows?: number;
   emptyText?: string;
 };
 
@@ -48,6 +49,7 @@ export function DataTable<T>({
   rowClassName,
   selectedRowKey,
   onRowSelect,
+  maxRows,
   emptyText = "조회된 데이터가 없습니다.",
 }: DataTableProps<T>) {
 
@@ -121,7 +123,7 @@ export function DataTable<T>({
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget)) setSelected(null);
       }}
-      style={{ maxHeight: tableMaxHeight(ROW_HEIGHT) }}
+      style={{ maxHeight: tableMaxHeight(ROW_HEIGHT, maxRows) }}
       className="overflow-auto bg-surface focus:outline-none"
     >
       <table
