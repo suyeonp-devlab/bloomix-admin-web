@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { SearchField } from "@/components/search/search-field";
 import { SearchPanel } from "@/components/search/search-panel";
+import { SearchRow } from "@/components/search/search-row";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { useCodeOptionsQuery } from "@/lib/code-option/code-option.queries";
@@ -39,58 +40,62 @@ export function BatchHistorySearchForm({
       onSearch={() => onSearchAction({ searchType, keyword: keyword.trim(), status, startedFrom, startedTo })}
       onReset={onResetAction}
     >
-      <SearchField label="시작일시" span={4}>
-        <Input
-          type="date"
-          className="min-w-0 flex-1"
-          aria-label="시작일 부터"
-          value={startedFrom}
-          onChange={(e) => setStartedFrom(e.target.value)}
-        />
-        <span className="text-fg-muted" aria-hidden>~</span>
-        <Input
-          type="date"
-          className="min-w-0 flex-1"
-          aria-label="시작일 까지"
-          value={startedTo}
-          onChange={(e) => setStartedTo(e.target.value)}
-        />
-      </SearchField>
-      <SearchField label="검색어" span={5}>
-        <Select
-          className="w-28 shrink-0"
-          aria-label="검색구분"
-          value={searchType}
-          onChange={(e) => {
-            setSearchType(e.target.value);
-            if (!e.target.value) setKeyword("");
-          }}
-        >
-          {searchTypes.map((item) => (
-            <option key={item.value} value={item.value}>{item.label}</option>
-          ))}
-        </Select>
-        <Input
-          className="min-w-0 flex-1"
-          aria-label="검색어"
-          placeholder={selectedSearchType?.etc1 ?? ""}
-          disabled={!searchType}
-          value={keyword}
-          onChange={(e) => setKeyword(e.target.value)}
-        />
-      </SearchField>
-      <SearchField label="상태" span={3}>
-        <Select
-          className="w-28"
-          aria-label="상태"
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
-        >
-          {statuses.map((item) => (
-            <option key={item.value} value={item.value}>{item.label}</option>
-          ))}
-        </Select>
-      </SearchField>
+      <SearchRow>
+        <SearchField label="시작일시">
+          <Input
+            type="date"
+            className="w-32"
+            aria-label="시작일 부터"
+            value={startedFrom}
+            onChange={(e) => setStartedFrom(e.target.value)}
+          />
+          <span className="text-fg-muted" aria-hidden>~</span>
+          <Input
+            type="date"
+            className="w-32"
+            aria-label="시작일 까지"
+            value={startedTo}
+            onChange={(e) => setStartedTo(e.target.value)}
+          />
+        </SearchField>
+        <SearchField label="검색어" className="w-96">
+          <Select
+            className="w-28 shrink-0"
+            aria-label="검색구분"
+            value={searchType}
+            onChange={(e) => {
+              setSearchType(e.target.value);
+              if (!e.target.value) setKeyword("");
+            }}
+          >
+            {searchTypes.map((item) => (
+              <option key={item.value} value={item.value}>{item.label}</option>
+            ))}
+          </Select>
+          <Input
+            className="min-w-0 flex-1"
+            aria-label="검색어"
+            placeholder={selectedSearchType?.etc1 ?? ""}
+            disabled={!searchType}
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
+          />
+        </SearchField>
+      </SearchRow>
+      <SearchRow>
+        <SearchField label="배치상태">
+          <Select
+            className="w-32"
+            aria-label="상태"
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+          >
+            {statuses.map((item) => (
+              <option key={item.value} value={item.value}>{item.label}</option>
+            ))}
+          </Select>
+        </SearchField>
+      </SearchRow>
     </SearchPanel>
   );
 }

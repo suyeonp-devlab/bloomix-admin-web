@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { SearchField } from "@/components/search/search-field";
 import { SearchPanel } from "@/components/search/search-panel";
+import { SearchRow } from "@/components/search/search-row";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { useCodeOptionsQuery } from "@/lib/code-option/code-option.queries";
@@ -37,41 +38,43 @@ export function CodeGroupSearchForm({
       onSearch={() => onSearchAction({ searchType, keyword: keyword.trim(), enabled })}
       onReset={onResetAction}
     >
-      <SearchField label="검색어" span={5}>
-        <Select
-          className="w-28 shrink-0"
-          aria-label="검색구분"
-          value={searchType}
-          onChange={(e) => {
-            setSearchType(e.target.value);
-            if (!e.target.value) setKeyword("");
-          }}
-        >
-          {searchTypes.map((item) => (
-            <option key={item.value} value={item.value}>{item.label}</option>
-          ))}
-        </Select>
-        <Input
-          className="min-w-0 flex-1"
-          aria-label="검색어"
-          placeholder={selectedSearchType?.etc1 ?? ""}
-          disabled={!searchType}
-          value={keyword}
-          onChange={(e) => setKeyword(e.target.value)}
-        />
-      </SearchField>
-      <SearchField label="사용 여부" span={3}>
-        <Select
-          className="w-28"
-          aria-label="사용 여부"
-          value={enabled}
-          onChange={(e) => setEnabled(e.target.value)}
-        >
-          {usgTypes.map((item) => (
-            <option key={item.value} value={item.value}>{item.label}</option>
-          ))}
-        </Select>
-      </SearchField>
+      <SearchRow>
+        <SearchField label="검색어" className="w-96">
+          <Select
+            className="w-28 shrink-0"
+            aria-label="검색구분"
+            value={searchType}
+            onChange={(e) => {
+              setSearchType(e.target.value);
+              if (!e.target.value) setKeyword("");
+            }}
+          >
+            {searchTypes.map((item) => (
+              <option key={item.value} value={item.value}>{item.label}</option>
+            ))}
+          </Select>
+          <Input
+            className="min-w-0 flex-1"
+            aria-label="검색어"
+            placeholder={selectedSearchType?.etc1 ?? ""}
+            disabled={!searchType}
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
+          />
+        </SearchField>
+        <SearchField label="사용 여부">
+          <Select
+            className="w-28"
+            aria-label="사용 여부"
+            value={enabled}
+            onChange={(e) => setEnabled(e.target.value)}
+          >
+            {usgTypes.map((item) => (
+              <option key={item.value} value={item.value}>{item.label}</option>
+            ))}
+          </Select>
+        </SearchField>
+      </SearchRow>
     </SearchPanel>
   );
 }
