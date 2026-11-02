@@ -18,7 +18,7 @@ export function FormSection({
   return (
     <section className="overflow-hidden rounded-md border border-line bg-surface">
       <div className="flex min-h-11 items-center justify-between border-b border-line px-4 py-2">
-        <div className="flex items-baseline gap-2">
+        <div className="flex items-baseline gap-3">
           <h2 className="text-md font-semibold">{title}</h2>
           {subtitle && <p className="text-sm text-fg-muted">{subtitle}</p>}
         </div>

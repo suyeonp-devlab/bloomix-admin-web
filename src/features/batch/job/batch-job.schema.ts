@@ -32,5 +32,5 @@ export const batchJobRunSchema = z.object({
       } catch {
         return false;
       }
-    }, "{\"키\": \"값\"} 형식의 JSON으로 입력해주세요."),
+    }, "{\"key\": \"value\"} 형식의 JSON으로 입력해주세요."),
 });
