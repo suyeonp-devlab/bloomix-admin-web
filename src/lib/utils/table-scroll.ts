@@ -5,6 +5,6 @@ export const TABLE_MAX_ROWS = 20;
 const HEADER_HEIGHT = 36;
 
 // 표 최대 높이(px) (헤더 + 최대 표시 행 수)
-export function tableMaxHeight(rowHeight: number) {
-  return HEADER_HEIGHT + rowHeight * TABLE_MAX_ROWS;
+export function tableMaxHeight(rowHeight: number, maxRows = TABLE_MAX_ROWS) {
+  return HEADER_HEIGHT + rowHeight * maxRows;
 }

@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 type FormCellProps = {
   label: string;
-  htmlFor: string;
+  htmlFor?: string;
   required?: boolean;
   error?: string;
   span?: number;
