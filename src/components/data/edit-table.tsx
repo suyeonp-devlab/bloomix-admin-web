@@ -5,6 +5,9 @@ import { tableMaxHeight } from "@/lib/utils/table-scroll";
 // 행 높이(px) (입력칸 + 셀 여백)
 const ROW_HEIGHT = 45;
 
+// 최대 표시 행 수 (넘으면 세로 스크롤)
+const MAX_ROWS = 9;
+
 export type EditTableColumn<T> = {
   key: string;
   header: string;
@@ -29,7 +32,7 @@ export function EditTable<T>({
 }: EditTableProps<T>) {
 
   return (
-    <div style={{ maxHeight: tableMaxHeight(ROW_HEIGHT) }} className="overflow-auto">
+    <div style={{ maxHeight: tableMaxHeight(ROW_HEIGHT, MAX_ROWS) }} className="overflow-auto">
       <table className="w-full table-fixed border-separate border-spacing-0 text-base">
         <thead>
           <tr>
