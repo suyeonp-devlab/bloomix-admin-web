@@ -41,7 +41,7 @@ export function BatchHistorySearchForm({
       onReset={onResetAction}
     >
       <SearchRow>
-        <SearchField label="시작일시">
+        <SearchField label="시작일자">
           <Input
             type="date"
             className="w-32"
